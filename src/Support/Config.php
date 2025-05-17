@@ -51,6 +51,10 @@ class Config
     {
         $actionClass = config("one-time-passwords.actions.{$actionName}");
 
+        if (!is_string($actionClass) || trim($actionClass) === '') {
+            throw InvalidConfig::invalidAction($actionName);
+        }
+
         self::ensureValidActionClass($actionName, $actionBaseClass, $actionClass);
 
         return $actionClass;
