@@ -40,3 +40,13 @@ it('will fail when a wrong action is configured', function () {
 
     Config::getAction('create_one_time_password', CreateOneTimePasswordAction::class);
 })->throws(InvalidActionClass::class);
+
+it('will fail when an action is not a valid class string', function ($invalidValue, $description) {
+    updateConfig('one-time-passwords.actions.create_one_time_password', $invalidValue);
+
+    Config::getAction('create_one_time_password', CreateOneTimePasswordAction::class);
+})->with([
+    [[],        'array'],
+    ['   ',     'empty string'],
+    [null,      'null'],
+])->throws(InvalidConfig::class, 'The configured action for `create_one_time_password` is missing or not a valid class string.');

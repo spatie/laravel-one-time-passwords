@@ -15,4 +15,9 @@ class InvalidConfig extends Exception
     {
         return new self("The configured notification `{$notificationClass}` is not a valid notification class because it does not extend `Spatie\LaravelOneTimePasswords\Notifications\OneTimePasswordNotification`.");
     }
+
+    public static function invalidAction(string $actionName): self
+    {
+        return new self("The configured action for `{$actionName}` is missing or not a valid class string.");
+    }
 }
