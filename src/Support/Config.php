@@ -27,8 +27,8 @@ class Config
     {
         $notificationClass = config('one-time-passwords.notification');
 
-        if (! is_a($notificationClass, OneTimePasswordNotification::class, true)) {
-            throw InvalidConfig::invalidNotification($notificationClass);
+        if (! is_string($notificationClass) || ! is_a($notificationClass, OneTimePasswordNotification::class, true)) {
+            throw InvalidConfig::invalidNotification(is_scalar($notificationClass) ? (string) $notificationClass : gettype($notificationClass));
         }
 
         return $notificationClass;
