@@ -16,8 +16,8 @@ class Config
     {
         $modelClass = config('one-time-passwords.model');
 
-        if (! is_a($modelClass, OneTimePassword::class, true)) {
-            throw InvalidConfig::invalidModel($modelClass);
+        if (! is_string($modelClass) || ! is_a($modelClass, OneTimePassword::class, true)) {
+            throw InvalidConfig::invalidModel(is_scalar($modelClass) ? (string) $modelClass : gettype($modelClass));
         }
 
         return $modelClass;
