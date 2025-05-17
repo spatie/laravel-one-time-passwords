@@ -1,6 +1,7 @@
 <?php
 
 use Spatie\LaravelOneTimePasswords\Enums\ConsumeOneTimePasswordResult;
+use Spatie\LaravelOneTimePasswords\Rules\OneTimePasswordRule;
 use Spatie\LaravelOneTimePasswords\Support\OriginInspector\DoNotEnforceOrigin;
 use Spatie\LaravelOneTimePasswords\Tests\TestSupport\Models\User;
 
@@ -130,4 +131,12 @@ it('will not login the user when the password is incorrect', function () {
     $result = $this->user->attemptLoginUsingOneTimePassword('wrong-password');
     expect($result)->toBe(ConsumeOneTimePasswordResult::IncorrectOneTimePassword);
     expect(auth()->check())->toBeFalse();
+});
+
+it('rejects non-string OTP codes', function () {
+    $rule = new OneTimePasswordRule($this->user);
+    
+    $rule->validate('otp', 12345, function ($message) {
+        expect($message)->toBe('The one-time password must be a string.');
+    });
 });
