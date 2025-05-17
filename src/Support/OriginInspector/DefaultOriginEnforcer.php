@@ -17,13 +17,13 @@ class DefaultOriginEnforcer implements OriginEnforcer
 
     public function verifyProperties(OneTimePassword $oneTimePassword, Request $request): bool
     {
-        $requestProperties = $oneTimePassword->origin_properties ?? [];
+        $requestProperties = (array) ($oneTimePassword->origin_properties ?? []);
 
-        if ($requestProperties['ip'] !== $request->ip()) {
+        if (!isset($requestProperties['ip']) || $requestProperties['ip'] !== $request->ip()) {
             return false;
         }
 
-        if ($requestProperties['userAgent'] !== $request->userAgent()) {
+        if (!isset($requestProperties['userAgent']) || $requestProperties['userAgent'] !== $request->userAgent()) {
             return false;
         }
 
