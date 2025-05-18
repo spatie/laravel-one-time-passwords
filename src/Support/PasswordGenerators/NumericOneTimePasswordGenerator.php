@@ -6,6 +6,10 @@ class NumericOneTimePasswordGenerator implements OneTimePasswordGenerator
 {
     protected int $numberOfDigits = 6;
 
+    public function __construct(){
+        $this->numberOfDigits(config('one-time-passwords.password_length'));
+    }
+
     public function numberOfDigits(int $numberOfDigits): self
     {
         $this->numberOfDigits = $numberOfDigits;

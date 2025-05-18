@@ -31,7 +31,7 @@ class OneTimePassword extends Model
     public static function generateFor(Model $model, int $expiresInMinutes = 10): self
     {
         return $model->oneTimePasswords()->create([
-            'password' => Str::random(6),
+            'password' => Str::random(config('one-time-passwords.password_length')),
             'expires_at' => Carbon::now()->addMinutes($expiresInMinutes),
         ]);
     }

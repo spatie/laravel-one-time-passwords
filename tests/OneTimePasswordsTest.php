@@ -25,6 +25,17 @@ it('can create a one-time password', function () {
     expect($oneTimePassword->expires_at->toDateTimeString())->toBe($expectedExpiresAt);
 });
 
+it('can create passwords with non-default length', function () {
+    updateConfig('one-time-passwords.password_length', '8');
+    $this->user->createOneTimePassword();
+
+    expect($this->user->oneTimePasswords)->toHaveCount(1);
+
+    $oneTimePassword = $this->user->oneTimePasswords->first();
+
+    expect($oneTimePassword->password)->toHaveLength(config('one-time-passwords.password_length'));
+});
+
 it('can consume a one-time password', function () {
     $oneTimePassword = $this->user->createOneTimePassword();
 
