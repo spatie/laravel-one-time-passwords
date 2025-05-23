@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-one-time-passwords` will be documented in this file.
 
+## 1.0.4 - 2025-05-23
+
+### What's Changed
+
+* Support PHP ^8.2 and Laravel ^11 by @x-JOC in https://github.com/spatie/laravel-one-time-passwords/pull/21
+
+**Full Changelog**: https://github.com/spatie/laravel-one-time-passwords/compare/1.0.3...1.0.4
+
 ## 1.0.3 - 2025-05-22
 
 ### What's Changed
