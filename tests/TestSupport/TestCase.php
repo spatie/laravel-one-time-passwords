@@ -57,6 +57,6 @@ class TestCase extends Orchestra
     {
         config()->set($key, $value);
 
-        new OneTimePasswordsServiceProvider($this->app)->packageRegistered();
+        (new OneTimePasswordsServiceProvider($this->app))->packageRegistered();
     }
 }
