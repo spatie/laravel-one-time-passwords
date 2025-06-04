@@ -48,7 +48,7 @@ use Spatie\OneTimePasswords\Models\OneTimePassword;
 
 Schedule::command('model:prune', [
     '--model' => [OneTimePassword::class],
-])->daily()
+])->daily();
 ```
 
 ## Publishing the config file
