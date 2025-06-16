@@ -36,7 +36,7 @@ $user->sendOneTimePassword();
 
 This is what the notification mail looks like:
 
-![image](/docs/images/notification.png)
+![image](/docs/images/otp-notification.png)
 
 Here's how you would try to log in a user using a one-time password.
 
