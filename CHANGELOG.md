@@ -2,6 +2,25 @@
 
 All notable changes to `laravel-one-time-passwords` will be documented in this file.
 
+## 1.0.5 - 2025-08-18
+
+### What's Changed
+
+* Update installation-setup.md by @BurtDS in https://github.com/spatie/laravel-one-time-passwords/pull/23
+* Update README.md by @ibra-br in https://github.com/spatie/laravel-one-time-passwords/pull/26
+* Bump aglipanci/laravel-pint-action from 2.5 to 2.6 by @dependabot[bot] in https://github.com/spatie/laravel-one-time-passwords/pull/28
+* Bump actions/checkout from 4 to 5 by @dependabot[bot] in https://github.com/spatie/laravel-one-time-passwords/pull/31
+* Bump stefanzweifel/git-auto-commit-action from 5 to 6 by @dependabot[bot] in https://github.com/spatie/laravel-one-time-passwords/pull/27
+* feat: add Russian language by @mTresk in https://github.com/spatie/laravel-one-time-passwords/pull/30
+
+### New Contributors
+
+* @BurtDS made their first contribution in https://github.com/spatie/laravel-one-time-passwords/pull/23
+* @ibra-br made their first contribution in https://github.com/spatie/laravel-one-time-passwords/pull/26
+* @mTresk made their first contribution in https://github.com/spatie/laravel-one-time-passwords/pull/30
+
+**Full Changelog**: https://github.com/spatie/laravel-one-time-passwords/compare/1.0.4...1.0.5
+
 ## 1.0.4 - 2025-05-23
 
 ### What's Changed
