@@ -11,7 +11,7 @@ You can extend this notification to customize the content and appearance of the 
 
 ## Adding support for additional channels
 
-To add support for additional channels, you can do so by creating a new notification class that extends the `Spatie\OneTimePasswords\Notifications\OneTimePasswordNotification` class. In that you custom class, you can add additional channels to the `via` method.
+To add support for additional channels, you can do so by creating a new notification class that extends the `Spatie\OneTimePasswords\Notifications\OneTimePasswordNotification` class. In that custom class, you can add additional channels to the `via` method.
 
 Before adding support for additional channels, please make sure to read the [Laravel documentation on customizing notification channels](https://laravel.com/docs/11.x/notifications).
 
