@@ -39,7 +39,7 @@ class CustomOneTimePasswordNotification extends OneTimePasswordNotification
 }
 ```
 
-To complete the SMS routing, don't for get to add the `routeNotificationForVonage` to your `User` model (as explained in the Laravel docs).
+To complete the SMS routing, don't forget to add the `routeNotificationForVonage` to your `User` model (as explained in the Laravel docs).
 
 ```php
 namespace App\Models;
@@ -69,7 +69,7 @@ Finally, you need to update the `config/one-time-passwords.php` configuration fi
 
 return [
     // ...
-    'notification' =>  => App\Notifications\CustomOneTimePasswordNotification::class
+    'notification' => App\Notifications\CustomOneTimePasswordNotification::class
 ];
 ```
 
