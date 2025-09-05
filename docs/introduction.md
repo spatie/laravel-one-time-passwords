@@ -25,7 +25,7 @@ $user->sendOneTimePassword();
 
 This is what the notification mail looks like:
 
-![image](/docs/laravel-one-time-passwords/v1/images/notification.png)
+![image](/docs/laravel-one-time-passwords/v1/images/otp-notification.png)
 
 Here's how you would try to log in a user using a one-time password.
 
