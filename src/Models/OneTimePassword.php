@@ -16,13 +16,10 @@ class OneTimePassword extends Model
 
     public $guarded = [];
 
-    public function casts(): array
-    {
-        return [
-            'origin_properties' => 'array',
-            'expires_at' => 'datetime',
-        ];
-    }
+    protected $casts = [
+        'origin_properties' => 'array',
+        'expires_at' => 'datetime',
+    ];
 
     public function authenticatable(): MorphTo
     {
@@ -33,7 +30,7 @@ class OneTimePassword extends Model
     {
         $action = Config::getAction('create_one_time_password', CreateOneTimePasswordAction::class);
 
-        $action->execute($model, $expiresInMinutes);
+        return $action->execute($model, $expiresInMinutes);
     }
 
     public function isExpired(): bool
