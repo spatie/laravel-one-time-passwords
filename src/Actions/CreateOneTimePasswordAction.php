@@ -38,7 +38,7 @@ class CreateOneTimePasswordAction
      */
     protected function createNewOneTimePassword(?int $expiresInMinutes, Authenticatable $user, ?Request $request): OneTimePassword
     {
-        $expiresInMinutes = $expiresInMinutes ?? config('one-time-passwords.default_expires_in_minutes');
+        $expiresInMinutes ??= config('one-time-passwords.default_expires_in_minutes');
 
         return $user->oneTimePasswords()->create([
             'password' => $this->passwordGenerator->generate(),

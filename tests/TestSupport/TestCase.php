@@ -18,6 +18,9 @@ class TestCase extends Orchestra
 
         config()->set('cache.default', 'array');
 
+        // Disable rate limiting for tests
+        config()->set('one-time-passwords.rate_limit_attempts.max_attempts_per_user', 999);
+
         Factory::guessFactoryNamesUsing(
             fn (string $modelName) => 'Spatie\\OneTimePasswords\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
@@ -31,7 +34,7 @@ class TestCase extends Orchestra
         ];
     }
 
-    public function getEnvironmentSetUp($app)
+    public function getEnvironmentSetUp($app): void
     {
         config()->set('database.default', 'testing');
         config()->set('app.key', Encrypter::generateKey(config('app.cipher')));
@@ -53,7 +56,7 @@ class TestCase extends Orchestra
         });
     }
 
-    public function updateConfig(string $key, mixed $value)
+    public function updateConfig(string $key, mixed $value): void
     {
         config()->set($key, $value);
 

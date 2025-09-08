@@ -36,7 +36,7 @@ trait HasOneTimePasswords
     {
         $action = Config::getAction('create_one_time_password', CreateOneTimePasswordAction::class);
 
-        $expiresInMinutes = $expiresInMinutes ?? config('one-time-passwords.default_expires_in_minutes');
+        $expiresInMinutes ??= config('one-time-passwords.default_expires_in_minutes');
 
         return $action->execute($this, $expiresInMinutes);
     }
