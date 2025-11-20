@@ -2,6 +2,20 @@
 
 All notable changes to `laravel-one-time-passwords` will be documented in this file.
 
+## 1.0.7 - 2025-11-20
+
+### What's Changed
+
+* Typo: rename avanced-usage to advanced-usage by @spoyntersmith in https://github.com/spatie/laravel-one-time-passwords/pull/43
+* Rename validation string `request_did_not_match` to `different_origin` by @lorenzolosa in https://github.com/spatie/laravel-one-time-passwords/pull/44
+
+### New Contributors
+
+* @spoyntersmith made their first contribution in https://github.com/spatie/laravel-one-time-passwords/pull/43
+* @lorenzolosa made their first contribution in https://github.com/spatie/laravel-one-time-passwords/pull/44
+
+**Full Changelog**: https://github.com/spatie/laravel-one-time-passwords/compare/1.0.6...1.0.7
+
 ## 1.0.5 - 2025-08-18
 
 ### What's Changed
