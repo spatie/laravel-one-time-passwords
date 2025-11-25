@@ -18,13 +18,21 @@
 Using this package, you can securely create and consume one-time passwords. By default, a one-time password is a number
 of six digits long that will be sent via a mail notification. This notification can be extended so it can be sent via other channels, like SMS.
 
-The package ships with a Livewire component to allow users to login using a one-time password.
+The package ships with a Livewire component to allow users to log in using a one-time password.
 
 ![image](/docs/images/form-email.png)
 
 ![image](/docs/images/form-code.png)
 
-Alternatively, you can to build the one-time password login flow you want with the easy-to-use methods the package provides.
+### Enhanced UI with Flux
+
+For an improved OTP input experience, you can optionally install [Flux](https://fluxui.dev). When Flux is detected, the package will automatically use the [Flux OTP input component](https://fluxui.dev/components/otp-input) instead of a standard text input.
+
+To install Flux, follow the instructions on their website: [https://fluxui.dev](https://fluxui.dev)
+
+### Build your own UI
+
+Alternatively, you can build the one-time password login flow you want with the easy-to-use methods the package provides.
 
 Here's how you would send a one-time password to a user
 
