@@ -9,9 +9,9 @@ of six digits long that will be sent via a mail notification. This notification 
 The package ships with a Livewire
 component to allow users to login using a one-time password.
 
-![image](/docs/laravel-one-time-passwords/v1/images/form-email.png)
+![image](/docs/laravel-one-time-passwords/v2/images/form-email.png)
 
-![image](/docs/laravel-one-time-passwords/v1/images/form-code.png)
+![image](/docs/laravel-one-time-passwords/v2/images/form-code.png)
 
 Alternatively, you can to build the one-time password login flow you want with the easy-to-use methods the package provides.
 
@@ -25,7 +25,7 @@ $user->sendOneTimePassword();
 
 This is what the notification mail looks like:
 
-![image](/docs/laravel-one-time-passwords/v1/images/otp-notification.png)
+![image](/docs/laravel-one-time-passwords/v2/images/otp-notification.png)
 
 Here's how you would try to log in a user using a one-time password.
 

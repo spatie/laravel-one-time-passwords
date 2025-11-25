@@ -5,7 +5,7 @@ weight: 4
 
 The package provides two methods to consume one-time passwords: `attemptLoginUsingOneTimePassword` and `consumeOneTimePassword`. Both of them will verify the given one-time password and return an instance of the `ConsumeOneTimePasswordResult` enum. If the one-time password is correct, the underlying `OneTimePassword` model for that password will be deleted, ensure that a one-time password can only be used once.
 
-By default, a one-time password can only be used on the same origin it was created on. This is to prevent a one-time password from being used on a different device or browser. You can read more about this in the [Enforcing Origin](/docs/laravel-one-time-passwords/v1/configuring-security/enforcing-origin) section.
+By default, a one-time password can only be used on the same origin it was created on. This is to prevent a one-time password from being used on a different device or browser. You can read more about this in the [Enforcing Origin](/docs/laravel-one-time-passwords/v2/configuring-security/enforcing-origin) section.
 
 ## Consuming one-time passwords
 

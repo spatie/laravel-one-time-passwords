@@ -9,7 +9,7 @@ You can install Flux by following the instructions on their website: [https://fl
 
 Once Flux is installed, the package will automatically detect it and use the Flux OTP input component instead of the default text input.
 
-![image](/docs/laravel-one-time-passwords/v1/images/flux.png)
+![image](/docs/laravel-one-time-passwords/v2/images/flux.png)
 
 
 
