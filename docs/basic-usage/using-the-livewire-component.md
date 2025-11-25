@@ -37,6 +37,16 @@ To customize the redirect URL, you can also pass an url to the `redirect-to` pro
 <livewire:one-time-password :redirect-to="route('home')">
 ```
 
+### Using the Flux OTP input component
+
+When [Flux](https://fluxui.dev) is installed, the Livewire component will automatically use the [Flux OTP input component](https://fluxui.dev/components/otp-input), which is much nicer than the default text input.
+
+You can install Flux by following the instructions on their website: [https://fluxui.dev](https://fluxui.dev)
+
+Once Flux is installed, the package will automatically detect it and use the Flux OTP input component instead of the default text input.
+
+![image](/docs/laravel-one-time-passwords/v2/images/flux.jpg)
+
 ## Customizing the styling
 
 You can customize the styling of the component by publishing the package's assets. To do this, run the following command:
