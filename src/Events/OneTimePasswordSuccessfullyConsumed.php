@@ -5,10 +5,10 @@ namespace Spatie\OneTimePasswords\Events;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Spatie\OneTimePasswords\Models\OneTimePassword;
 
-readonly class OneTimePasswordSuccessfullyConsumed
+class OneTimePasswordSuccessfullyConsumed
 {
     public function __construct(
-        protected Authenticatable $user,
-        protected OneTimePassword $oneTimePassword,
+        protected readonly Authenticatable $user,
+        protected readonly OneTimePassword $oneTimePassword,
     ) {}
 }

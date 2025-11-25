@@ -2,7 +2,7 @@
     <a href="https://spatie.be/open-source?utm_source=github&utm_medium=banner&utm_campaign=laravel-one-time-passwords">
       <picture>
         <source media="(prefers-color-scheme: dark)" srcset="https://spatie.be/packages/header/laravel-one-time-passwords/html/dark.webp?1747402150">
-        <img alt="Logo for laravel-permission" src="https://spatie.be/packages/header/laravel-one-time-passwords/html/light.webp?1747402150" height="190">
+        <img alt="Logo for laravel-permission" src="https://spatie.be/packages/header/laravel-one-time-passwords/html/light.webp?1747402150">
       </picture>
     </a>
 
@@ -44,7 +44,7 @@ $user->sendOneTimePassword();
 
 This is what the notification mail looks like:
 
-![image](/docs/images/notification.png)
+![image](/docs/images/otp-notification.png)
 
 Here's how you would try to log in a user using a one-time password.
 

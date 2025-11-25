@@ -48,7 +48,7 @@ use Spatie\OneTimePasswords\Models\OneTimePassword;
 
 Schedule::command('model:prune', [
     '--model' => [OneTimePassword::class],
-])->daily()
+])->daily();
 ```
 
 ## Publishing the config file
@@ -56,7 +56,7 @@ Schedule::command('model:prune', [
 Optionally, you can publish the `one-time-passwords` config file with this command.
 
 ```bash
-php artisan vendor:publish --tag="one-time-password-config"
+php artisan vendor:publish --tag="one-time-passwords-config"
 ```
 
 This is the content of the published config file:

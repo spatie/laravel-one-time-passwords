@@ -19,7 +19,7 @@ class OneTimePasswordsServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasViews()
             ->hasTranslations()
-            ->hasMigration('one_time_passwords');
+            ->hasMigration('create_one_time_passwords_table');
     }
 
     public function packageRegistered(): void
