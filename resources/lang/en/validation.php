@@ -5,4 +5,5 @@ return [
     'incorrect_one_time_password' => 'The given code is not correct',
     'different_origin' => 'The given code is not correct',
     'one_time_password_expired' => 'The given code is not valid anymore',
+    'rate_limit_exceeded' => 'Too many requests',
 ];
