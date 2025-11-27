@@ -2,6 +2,20 @@
 
 All notable changes to `laravel-one-time-passwords` will be documented in this file.
 
+## 1.0.8 - 2025-11-27
+
+### What's Changed
+
+* Bump actions/checkout from 5 to 6 by @dependabot[bot] in https://github.com/spatie/laravel-one-time-passwords/pull/45
+* Add support for Flux by @freekmurze in https://github.com/spatie/laravel-one-time-passwords/pull/46
+* Add English translation for `rate_limit_exceeded` by @lorenzolosa in https://github.com/spatie/laravel-one-time-passwords/pull/47
+
+### New Contributors
+
+* @freekmurze made their first contribution in https://github.com/spatie/laravel-one-time-passwords/pull/46
+
+**Full Changelog**: https://github.com/spatie/laravel-one-time-passwords/compare/1.0.7...1.0.8
+
 ## 1.0.7 - 2025-11-20
 
 ### What's Changed
