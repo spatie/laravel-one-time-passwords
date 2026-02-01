@@ -2,6 +2,19 @@
 
 All notable changes to `laravel-one-time-passwords` will be documented in this file.
 
+## 1.0.9 - 2026-02-01
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.4.0 to 2.5.0 by @dependabot[bot] in https://github.com/spatie/laravel-one-time-passwords/pull/50
+* Feature: add German translation by @gpluess in https://github.com/spatie/laravel-one-time-passwords/pull/48
+
+### New Contributors
+
+* @gpluess made their first contribution in https://github.com/spatie/laravel-one-time-passwords/pull/48
+
+**Full Changelog**: https://github.com/spatie/laravel-one-time-passwords/compare/1.0.8...1.0.9
+
 ## 1.0.8 - 2025-11-27
 
 ### What's Changed
