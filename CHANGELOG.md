@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-one-time-passwords` will be documented in this file.
 
+## 1.0.10 - 2026-02-09
+
+### What's Changed
+
+- Add support for Livewire 4
+
 ## 1.0.9 - 2026-02-01
 
 ### What's Changed
