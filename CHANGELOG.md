@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-one-time-passwords` will be documented in this file.
 
+## 1.0.11 - 2026-02-27
+
+Support Laravel 13
+
 ## 1.0.10 - 2026-02-09
 
 ### What's Changed
