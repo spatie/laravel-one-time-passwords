@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-one-time-passwords` will be documented in this file.
 
+## 1.1.0 - 2026-04-08
+
+### What's Changed
+
+* Fix #55: respect enforce_same_origin config value by @freekmurze in https://github.com/spatie/laravel-one-time-passwords/pull/56
+
+**Full Changelog**: https://github.com/spatie/laravel-one-time-passwords/compare/1.0.11...1.1.0
+
 ## 1.0.11 - 2026-02-27
 
 Support Laravel 13
