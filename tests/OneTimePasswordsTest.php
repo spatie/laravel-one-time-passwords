@@ -126,6 +126,19 @@ it('has an inspector that does not enforce origin', function () {
     expect($result)->toBe(ConsumeOneTimePasswordResult::Ok);
 });
 
+it('will not enforce origin when enforce_same_origin config is false', function () {
+    updateConfig('one-time-passwords.enforce_same_origin', false);
+
+    $oneTimePassword = $this->user->createOneTimePassword();
+
+    $oneTimePassword->update([
+        'origin_properties' => array_merge($oneTimePassword->origin_properties, ['userAgent' => 'some-other-user-agent']),
+    ]);
+
+    $result = $this->user->consumeOneTimePassword($oneTimePassword->password);
+    expect($result)->toBe(ConsumeOneTimePasswordResult::Ok);
+});
+
 it('can log in the user', function () {
     $oneTimePassword = $this->user->createOneTimePassword();
 
