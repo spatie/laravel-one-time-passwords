@@ -54,10 +54,7 @@ use Spatie\OneTimePasswords\Enums\ConsumeOneTimePasswordResult;
 $result = $user->attemptLoginUsingOneTimePassword($oneTimePassword);
 
 if ($result->isOk()) {
-     // it is best practice to regenerate the session id after a login   
-     $request->session()->regenerate();
-              
-     return redirect()->intended('dashboard');
+    return redirect()->intended('dashboard');
 }
 
 return back()->withErrors([
