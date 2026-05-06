@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Sleep;
 use Spatie\OneTimePasswords\Enums\ConsumeOneTimePasswordResult;
 use Spatie\OneTimePasswords\Support\OriginInspector\DoNotEnforceOrigin;
 use Spatie\OneTimePasswords\Tests\TestSupport\Models\User;
@@ -155,4 +156,28 @@ it('will not login the user when the password is incorrect', function () {
     $result = $this->user->attemptLoginUsingOneTimePassword('wrong-password');
     expect($result)->toBe(ConsumeOneTimePasswordResult::IncorrectOneTimePassword);
     expect(auth()->check())->toBeFalse();
+});
+
+it('does not pad execution time via Timebox when the one-time password is valid', function () {
+    Sleep::fake();
+
+    $oneTimePassword = $this->user->createOneTimePassword();
+
+    $result = $this->user->consumeOneTimePassword($oneTimePassword->password);
+
+    expect($result)->toBe(ConsumeOneTimePasswordResult::Ok);
+
+    Sleep::assertNeverSlept();
+});
+
+it('pads execution time via Timebox when the one-time password is invalid', function () {
+    Sleep::fake();
+
+    $this->user->createOneTimePassword();
+
+    $result = $this->user->consumeOneTimePassword('wrong-password');
+
+    expect($result)->toBe(ConsumeOneTimePasswordResult::IncorrectOneTimePassword);
+
+    Sleep::assertSleptTimes(1);
 });
