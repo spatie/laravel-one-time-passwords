@@ -2,6 +2,21 @@
 
 All notable changes to `laravel-one-time-passwords` will be documented in this file.
 
+## 1.1.1 - 2026-05-11
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.5.0 to 3.0.0 by @dependabot[bot] in https://github.com/spatie/laravel-one-time-passwords/pull/54
+* Bump dependabot/fetch-metadata from 3.0.0 to 3.1.0 by @dependabot[bot] in https://github.com/spatie/laravel-one-time-passwords/pull/57
+* Remove redundant session regeneration line from README example by @vincenzoraco in https://github.com/spatie/laravel-one-time-passwords/pull/58
+* Return early from Timebox on successful OTP consumption by @vincenzoraco in https://github.com/spatie/laravel-one-time-passwords/pull/59
+
+### New Contributors
+
+* @vincenzoraco made their first contribution in https://github.com/spatie/laravel-one-time-passwords/pull/58
+
+**Full Changelog**: https://github.com/spatie/laravel-one-time-passwords/compare/1.1.0...1.1.1
+
 ## 1.1.0 - 2026-04-08
 
 ### What's Changed
