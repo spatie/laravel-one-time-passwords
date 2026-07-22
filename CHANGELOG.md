@@ -2,6 +2,19 @@
 
 All notable changes to `laravel-one-time-passwords` will be documented in this file.
 
+## 1.1.2 - 2026-07-22
+
+### What's Changed
+
+* Bump actions/checkout from 6 to 7 by @dependabot[bot] in https://github.com/spatie/laravel-one-time-passwords/pull/60
+* Add index to expires_at column by @damiogunsiji in https://github.com/spatie/laravel-one-time-passwords/pull/61
+
+### New Contributors
+
+* @damiogunsiji made their first contribution in https://github.com/spatie/laravel-one-time-passwords/pull/61
+
+**Full Changelog**: https://github.com/spatie/laravel-one-time-passwords/compare/1.1.1...1.1.2
+
 ## 1.1.1 - 2026-05-11
 
 ### What's Changed
