@@ -5,6 +5,7 @@ namespace Spatie\OneTimePasswords\Actions;
 use Carbon\CarbonInterval;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Timebox;
@@ -27,10 +28,14 @@ class ConsumeOneTimePasswordAction
     public function execute(
         Authenticatable $user,
         string $password,
-        Request $request
+        Request $request,
+        ?Model $verifiable = null,
+        ?string $type = null
     ): ConsumeOneTimePasswordResult {
         return (new Timebox)->call(
-            callback: fn (Timebox $timebox) => $this->consumeOneTimePassword($user, $password, $request, $timebox),
+            callback: fn (Timebox $timebox) => $this->consumeOneTimePassword(
+                $user, $password, $request, $timebox, $verifiable, $type
+            ),
             microseconds: CarbonInterval::milliseconds(100)->microseconds,
         );
     }
@@ -43,6 +48,8 @@ class ConsumeOneTimePasswordAction
         string $password,
         Request $request,
         Timebox $timebox,
+        ?Model $verifiable = null,
+        ?string $type = null
     ): ConsumeOneTimePasswordResult {
         $oneTimePasswords = $this->getAllOneTimePasswordsForUser($user);
 
@@ -71,6 +78,14 @@ class ConsumeOneTimePasswordAction
 
         if (! $originPropertiesAreValid) {
             return $this->onFailedToValidate($user, ConsumeOneTimePasswordResult::DifferentOrigin);
+        }
+
+        if (! $this->hasSameVerifiable($oneTimePassword, $verifiable)) {
+            return $this->onFailedToValidate($user, ConsumeOneTimePasswordResult::DifferentVerifiable);
+        }
+
+        if (! $this->hasSameType($oneTimePassword, $type)) {
+            return $this->onFailedToValidate($user, ConsumeOneTimePasswordResult::DifferentType);
         }
 
         $this->onSuccessfullyValidated($user, $oneTimePassword);
@@ -128,5 +143,33 @@ class ConsumeOneTimePasswordAction
             callback: function () {},
             decaySeconds: config('one-time-passwords.rate_limit_attempts.time_window_in_seconds'),
         );
+    }
+
+    protected function hasSameVerifiable(OneTimePassword $oneTimePassword, ?Model $verifiable): bool
+    {
+        if ($oneTimePassword->verifiable_id === null) {
+            return true;
+        }
+
+        if ($oneTimePassword->verifiable_id === $verifiable->id &&
+         $oneTimePassword->verifiable_type === $verifiable::class
+        ) {
+            return true;
+        }
+
+        return false;
+    }
+
+    protected function hasSameType(OneTimePassword $oneTimePassword, ?string $type): bool
+    {
+        if ($oneTimePassword->type === null) {
+            return true;
+        }
+
+        if ($oneTimePassword->type === $type) {
+            return true;
+        }
+
+        return false;
     }
 }

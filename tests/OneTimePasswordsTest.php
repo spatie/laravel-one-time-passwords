@@ -181,3 +181,59 @@ it('pads execution time via Timebox when the one-time password is invalid', func
 
     Sleep::assertSleptTimes(1);
 });
+
+it('can create a one-time password with type', function () {
+    $this->user->createOneTimePassword(type: 'user-auth');
+
+    $oneTimePassword = $this->user->oneTimePasswords->first();
+
+    expect($oneTimePassword->type)->toBe('user-auth');
+});
+
+it('can consume a one-time password with type', function () {
+    $oneTimePassword = $this->user->createOneTimePassword(type: 'user-auth');
+
+    $result = $this->user->consumeOneTimePassword($oneTimePassword->password, type: 'user-auth');
+
+    expect($result)->toBe(ConsumeOneTimePasswordResult::Ok);
+});
+
+it('will not return ok for a different type', function () {
+    $oneTimePassword = $this->user->createOneTimePassword(type: 'user-auth');
+
+    $result = $this->user->consumeOneTimePassword($oneTimePassword->password, type: 'transaction');
+
+    expect($result)->toBe(ConsumeOneTimePasswordResult::DifferentType);
+});
+
+it('can create a one-time password with verifiable', function () {
+    $verifiable = User::factory()->create();
+
+    $this->user->createOneTimePassword(verifiable: $verifiable);
+
+    $oneTimePassword = $this->user->oneTimePasswords->first();
+
+    expect($oneTimePassword->verifiable_type)->toBe(User::class)
+        ->and($oneTimePassword->verifiable_id)->toBe($verifiable->id);
+});
+
+it('can consume a one-time password with verifiable', function () {
+    $verifiable = User::factory()->create();
+
+    $oneTimePassword = $this->user->createOneTimePassword(verifiable: $verifiable);
+
+    $result = $this->user->consumeOneTimePassword($oneTimePassword->password, verifiable: $verifiable);
+
+    expect($result)->toBe(ConsumeOneTimePasswordResult::Ok);
+});
+
+it('will not return ok for a different verifiable', function () {
+    $verifiable = User::factory()->create();
+    $invalidVerifiable = User::factory()->create();
+
+    $oneTimePassword = $this->user->createOneTimePassword(verifiable: $verifiable);
+
+    $result = $this->user->consumeOneTimePassword($oneTimePassword->password, verifiable: $invalidVerifiable);
+
+    expect($result)->toBe(ConsumeOneTimePasswordResult::DifferentVerifiable);
+});

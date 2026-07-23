@@ -32,18 +32,24 @@ trait HasOneTimePasswords
         $this->oneTimePasswords()->delete();
     }
 
-    public function createOneTimePassword(?int $expiresInMinutes = null): OneTimePassword
-    {
+    public function createOneTimePassword(
+        ?int $expiresInMinutes = null,
+        ?Model $verifiable = null,
+        ?string $type = null
+    ): OneTimePassword {
         $action = Config::getAction('create_one_time_password', CreateOneTimePasswordAction::class);
 
         $expiresInMinutes ??= config('one-time-passwords.default_expires_in_minutes');
 
-        return $action->execute($this, $expiresInMinutes);
+        return $action->execute($this, $expiresInMinutes, request(), $verifiable, $type);
     }
 
-    public function sendOneTimePassword(?int $expiresInMinutes = null): self
-    {
-        $oneTimePassword = $this->createOneTimePassword($expiresInMinutes);
+    public function sendOneTimePassword(
+        ?int $expiresInMinutes = null,
+        ?Model $verifiable = null,
+        ?string $type = null
+    ): self {
+        $oneTimePassword = $this->createOneTimePassword($expiresInMinutes, $verifiable, $type);
 
         $notificationClass = Config::oneTimePasswordNotificationClass();
         $this->notify(new $notificationClass($oneTimePassword));
@@ -51,16 +57,23 @@ trait HasOneTimePasswords
         return $this;
     }
 
-    public function consumeOneTimePassword(string $password): ConsumeOneTimePasswordResult
-    {
+    public function consumeOneTimePassword(
+        string $password,
+        ?Model $verifiable = null,
+        ?string $type = null
+    ): ConsumeOneTimePasswordResult {
         $action = Config::getAction('consume_one_time_password', ConsumeOneTimePasswordAction::class);
 
-        return $action->execute($this, $password, request());
+        return $action->execute($this, $password, request(), $verifiable, $type);
     }
 
-    public function attemptLoginUsingOneTimePassword(string $password, bool $remember = false): ConsumeOneTimePasswordResult
-    {
-        $result = $this->consumeOneTimePassword($password);
+    public function attemptLoginUsingOneTimePassword(
+        string $password,
+        bool $remember = false,
+        ?Model $verifiable = null,
+        ?string $type = null,
+    ): ConsumeOneTimePasswordResult {
+        $result = $this->consumeOneTimePassword($password, $verifiable, $type);
 
         if ($result->isOk()) {
             auth()->login($this, $remember);

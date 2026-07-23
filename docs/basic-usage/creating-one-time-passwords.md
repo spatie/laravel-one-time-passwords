@@ -25,6 +25,11 @@ To create a one-time password without actually sending it to the user, you can c
 $oneTimePasswordModel = $user->createOneTimePassword();
 ```
 
-This method will return an instance of a newly created `OneTimePassword` model. 
+This method will return an instance of a newly created `OneTimePassword` model.
 
+You can give it a type or a verifiable that will be used when consuming the one-time password.
 
+```php
+$oneTimePasswordWithType = $user->createOneTimePassword(type: "user-auth");
+$oneTimePasswordWithVerifiable = $user->createOneTimePassword(verifiable: $anotherModelInstance);
+```

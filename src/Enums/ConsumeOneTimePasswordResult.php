@@ -12,6 +12,8 @@ enum ConsumeOneTimePasswordResult: string
     case DifferentOrigin = 'differentOrigin';
     case OneTimePasswordExpired = 'oneTimePasswordExpired';
     case RateLimitExceeded = 'rateLimitExceeded';
+    case DifferentVerifiable = 'differentVerifiable';
+    case DifferentType = 'differentType';
 
     public function isOk(): bool
     {

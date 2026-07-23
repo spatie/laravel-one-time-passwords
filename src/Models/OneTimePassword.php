@@ -26,6 +26,11 @@ class OneTimePassword extends Model
         return $this->morphTo();
     }
 
+    public function verifiable(): MorphTo
+    {
+        return $this->morphTo();
+    }
+
     public static function generateFor(Model&Authenticatable $model, int $expiresInMinutes = 10): self
     {
         $action = Config::getAction('create_one_time_password', CreateOneTimePasswordAction::class);

@@ -20,9 +20,9 @@ use Spatie\OneTimePasswords\Enums\ConsumeOneTimePasswordResult;
 $result = $user->attemptLoginUsingOneTimePassword($oneTimePassword, remember: false);
 
 if ($result->isOk()) {
-     // it is best practice to regenerate the session id after a login   
+     // it is best practice to regenerate the session id after a login
      $request->session()->regenerate();
-              
+
      return redirect()->intended('dashboard');
 }
 
@@ -35,6 +35,12 @@ Alternatively, you can use the `consumeOneTimePassword`. Which will do the same 
 
 ```php
 $result = $user->consumeOneTimePassword($oneTimePassword);
+```
+
+If you have created one-time password with type or verifiable, you must provide the same values when consuming.
+
+```php
+$result = $user->consumeOneTimePassword($oneTimePassword, $transaction, 'transaction');
 ```
 
 ## Inspecting the result
