@@ -28,8 +28,8 @@
         "livewire/livewire": "^3.7|^4.0",
         "nunomaduro/collision": "^8.8.3",
         "orchestra/testbench": "^10.0.0|^11.0",
-        "pestphp/pest": "^3.0|^4.1.5",
-        "pestphp/pest-plugin-laravel": "^3.0|^4.0",
+        "pestphp/pest": "^3.0|^4.1.5|^5.0",
+        "pestphp/pest-plugin-laravel": "^3.0|^4.0|^5.0",
         "phpstan/phpstan": "^2.1.32",
         "spatie/laravel-ray": "^1.43.1"
     },
